@@ -1,6 +1,6 @@
 FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-8-jdk
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 RUN         apt update -y \
 	&& apt install -y \

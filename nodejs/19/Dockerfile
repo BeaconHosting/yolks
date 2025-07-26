@@ -1,6 +1,6 @@
 FROM        --platform=$TARGETOS/$TARGETARCH node:19-bullseye-slim
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 # add container user and set stop signal
 RUN         useradd -m -d /home/container container

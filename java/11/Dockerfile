@@ -1,6 +1,6 @@
 FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:11-jdk-noble
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
 LABEL       org.opencontainers.image.licenses=MIT

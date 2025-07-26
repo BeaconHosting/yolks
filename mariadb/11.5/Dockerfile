@@ -3,7 +3,7 @@
 # -----------------------------------------------------
 FROM        --platform=$TARGETOS/$TARGETARCH mariadb:11.5
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 ENV         DEBIAN_FRONTEND=noninteractive
 

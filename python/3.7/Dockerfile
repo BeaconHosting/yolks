@@ -1,6 +1,6 @@
 FROM        --platform=$TARGETOS/$TARGETARCH python:3.7-slim-bookworm
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 RUN         apt update \
 	&& apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tini \

@@ -3,7 +3,7 @@
 # ----------------------------------
 FROM --platform=$TARGETOS/$TARGETARCH postgres:10-alpine
 
-LABEL author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 # UID 999 is the default pterodactyl user
 RUN adduser -D -h /home/container container

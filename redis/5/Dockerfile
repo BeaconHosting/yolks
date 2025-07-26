@@ -3,7 +3,7 @@
 # ----------------------------------
 FROM    --platform=$TARGETOS/$TARGETARCH redis:5-bullseye
 
-LABEL   author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL   author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 ENV     DEBIAN_FRONTEND=noninteractive
 

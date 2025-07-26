@@ -3,7 +3,7 @@
 # ----------------------------------
 FROM        --platform=$TARGETOS/$TARGETARCH mongo:8-noble
 
-LABEL       author="Razorrftw maintainer="ryanw@beaconhosting.org"
+LABEL       author="Razorrftw" maintainer="ryanw@beaconhosting.org"
 
 ENV         DEBIAN_FRONTEND=noninteractive
 

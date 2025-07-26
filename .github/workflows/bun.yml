@@ -1,23 +1,192 @@
-name: build bun
+name: Build All Yolks
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 1 * *"
   push:
     branches:
-      - master
+      - main
     paths:
-      - bun/*
+      - "**/Dockerfile"
+
 jobs:
-  push:
-    name: "yolks:bun_latest"
+  build-push:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - context: ./bun
+            dockerfile: ./bun/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:bun_latest
+          - context: ./postgres/16
+            dockerfile: ./postgres/16/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_16
+          - context: ./postgres/14
+            dockerfile: ./postgres/14/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_14
+          - context: ./postgres/13
+            dockerfile: ./postgres/13/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_13
+          - context: ./postgres/12
+            dockerfile: ./postgres/12/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_12
+          - context: ./postgres/11
+            dockerfile: ./postgres/11/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_11
+          - context: ./postgres/10
+            dockerfile: ./postgres/10/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_10
+          - context: ./postgres/9
+            dockerfile: ./postgres/9/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:postgres_9
+          - context: ./java/8
+            dockerfile: ./java/8/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_8
+          - context: ./java/11
+            dockerfile: ./java/11/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_11
+          - context: ./java/16
+            dockerfile: ./java/16/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_16
+          - context: ./java/17
+            dockerfile: ./java/17/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_17
+          - context: ./java/19
+            dockerfile: ./java/19/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_19
+          - context: ./java/21
+            dockerfile: ./java/21/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_21
+          - context: ./java/22
+            dockerfile: ./java/22/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_22
+          - context: ./java/8j9
+            dockerfile: ./java/8j9/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_8j9
+          - context: ./java/11j9
+            dockerfile: ./java/11j9/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_11j9
+          - context: ./java/16j9
+            dockerfile: ./java/16j9/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:java_16j9
+          # MariaDB
+          - context: ./mariadb/10.3
+            dockerfile: ./mariadb/10.3/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_10.3
+          - context: ./mariadb/10.4
+            dockerfile: ./mariadb/10.4/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_10.4
+          - context: ./mariadb/10.5
+            dockerfile: ./mariadb/10.5/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_10.5
+          - context: ./mariadb/10.6
+            dockerfile: ./mariadb/10.6/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_10.6
+          - context: ./mariadb/10.7
+            dockerfile: ./mariadb/10.7/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_10.7
+          - context: ./mariadb/11.2
+            dockerfile: ./mariadb/11.2/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_11.2
+          - context: ./mariadb/11.3
+            dockerfile: ./mariadb/11.3/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_11.3
+          - context: ./mariadb/11.4
+            dockerfile: ./mariadb/11.4/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_11.4
+          - context: ./mariadb/11.5
+            dockerfile: ./mariadb/11.5/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_11.5
+          - context: ./mariadb/11.6
+            dockerfile: ./mariadb/11.6/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mariadb_11.6
+          # MongoDB
+          - context: ./mongodb/5
+            dockerfile: ./mongodb/5/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mongodb_5
+          - context: ./mongodb/6
+            dockerfile: ./mongodb/6/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mongodb_6
+          - context: ./mongodb/7
+            dockerfile: ./mongodb/7/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mongodb_7
+          - context: ./mongodb/8
+            dockerfile: ./mongodb/8/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:mongodb_8
+          # NodeJS
+          - context: ./nodejs/12
+            dockerfile: ./nodejs/12/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_12
+          - context: ./nodejs/14
+            dockerfile: ./nodejs/14/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_14
+          - context: ./nodejs/16
+            dockerfile: ./nodejs/16/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_16
+          - context: ./nodejs/17
+            dockerfile: ./nodejs/17/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_17
+          - context: ./nodejs/18
+            dockerfile: ./nodejs/18/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_18
+          - context: ./nodejs/19
+            dockerfile: ./nodejs/19/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_19
+          - context: ./nodejs/20
+            dockerfile: ./nodejs/20/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_20
+          - context: ./nodejs/21
+            dockerfile: ./nodejs/21/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_21
+          - context: ./nodejs/22
+            dockerfile: ./nodejs/22/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_22
+          - context: ./nodejs/23
+            dockerfile: ./nodejs/23/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_23
+          - context: ./nodejs/24
+            dockerfile: ./nodejs/24/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:nodejs_24
+          # Python
+          - context: ./python/2.7
+            dockerfile: ./python/2.7/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_2.7
+          - context: ./python/3.10
+            dockerfile: ./python/3.10/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.10
+          - context: ./python/3.11
+            dockerfile: ./python/3.11/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.11
+          - context: ./python/3.12
+            dockerfile: ./python/3.12/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.12
+          - context: ./python/3.13
+            dockerfile: ./python/3.13/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.13
+          - context: ./python/3.7
+            dockerfile: ./python/3.7/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.7
+          - context: ./python/3.8
+            dockerfile: ./python/3.8/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.8
+          - context: ./python/3.9
+            dockerfile: ./python/3.9/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:python_3.9
+          # Redis
+          - context: ./redis/5
+            dockerfile: ./redis/5/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:redis_5
+          - context: ./redis/6
+            dockerfile: ./redis/6/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:redis_6
+          - context: ./redis/7
+            dockerfile: ./redis/7/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:redis_7
+          - context: ./redis/8
+            dockerfile: ./redis/8/Dockerfile
+            tag: ghcr.io/beaconhosting/yolks:redis_8
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
-        with:
-          buildkitd-flags: --debug
       - uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -25,9 +194,8 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v5
         with:
-          context: ./bun
-          file: ./bun/Dockerfile
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: |
-            ghcr.io/beaconhosting/yolks:bun_latest
+          tags: ${{ matrix.tag }}

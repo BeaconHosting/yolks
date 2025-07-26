@@ -1,7 +1,7 @@
 # ----------------------------------
 # Environment: Postgres DB
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH postgres:16-alpine
+FROM --platform=$TARGETOS/$TARGETARCH postgres:9-alpine
 
 LABEL author="Razorrftw maintainer="ryanw@beaconhosting.org"
 

@@ -1,7 +1,7 @@
 # ----------------------------------
 # Environment: Postgres DB
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH postgres:16-alpine
+FROM --platform=$TARGETOS/$TARGETARCH postgres:10-alpine
 
 LABEL author="Razorrftw maintainer="ryanw@beaconhosting.org"
 
@@ -9,6 +9,7 @@ LABEL author="Razorrftw maintainer="ryanw@beaconhosting.org"
 RUN adduser -D -h /home/container container
 
 RUN     apk add --no-cache tini curl iproute2 ca-certificates fontconfig git openssl sqlite tar tzdata
+
 USER container
 ENV HOME=/home/container
 WORKDIR /home/container

@@ -1,14 +1,15 @@
 # ----------------------------------
 # Environment: Postgres DB
 # ----------------------------------
-FROM --platform=$TARGETOS/$TARGETARCH postgres:16-alpine
+FROM --platform=$TARGETOS/$TARGETARCH postgres:14-alpine
 
 LABEL author="Razorrftw maintainer="ryanw@beaconhosting.org"
 
 # UID 999 is the default pterodactyl user
 RUN adduser -D -h /home/container container
 
-RUN     apk add --no-cache tini curl iproute2 ca-certificates fontconfig git openssl sqlite tar tzdata
+RUN     apk add --no-cache tini curl iproute2 ca-certificates fontconfig git openssl sqlite tar tzdata fontconfig git openssl sqlite tar tzdata
+
 USER container
 ENV HOME=/home/container
 WORKDIR /home/container
